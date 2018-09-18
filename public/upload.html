@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title><style type="text/css">
+	form{
+		margin:200px;
+		width:350px;
+		padding:50px;
+		border:1px solid;
+	}
+	label{
+		color:red;
+	}
+	input{
+		width:200px;
+		float:right;
+	}
+
+</style>
+
+</head>
+
+    <script>
+        function verify(file) {
+        	 let checkEle = document.querySelector("#checkFile");
+            let fileType = ['xls', 'xlsx'];
+            let filePath = file.value;            
+            let maxSize = 10 * 1024 * 1024;
+            if (filePath) {
+                if (fileType.some(value => filePath.endsWith(value))) {
+                    if (file.size > maxSize) checkEle.textContent = "文件不能大于10M";
+                    else checkEle.textContent = "成功";
+                } else checkEle.textContent = "文件格式不对";
+            }
+        }
+    </script>
+<body>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+
+        <p>上传文件： <input type="file" name="content" onchange="verify(this)" /><label id="checkFile"></label></p>
+        <p>文件标题行： <input name="targetCol" type="number" /></p>
+        <p>检索列： <input name="targetTitle" type="number" /></p>
+        <p>口令：</label> <input name="pwd" type="password" /></p>
+
+        <input type="submit" value="提交" /><label id="resStatus"></label>
+    </form>
+   
+</body>
+
+</html>
