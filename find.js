@@ -18,10 +18,8 @@ module.exports = function(sheets,req, res, { row = 0, col = 2 } = {}) {
     	}
     if (Object.keys(sheets).indexOf(namesh + '') == -1) return res.reply('浪费一次机会，请输入正确名称！');
     let data = sheets[namesh].filter(val => {
-    	console.log('val:'+val[col]);
         return val[col] && (''+val[col]).includes(findtxt);
     });
-    console.log('\n'+data);
     if (data.length < 1 || data.length > 10) {
         res.reply(`Err:${data.length} 请回复正确的名称/::|`);
     } else {

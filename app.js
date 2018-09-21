@@ -27,7 +27,6 @@ fs.readdir('./xls', function(err, filename) {
 //         	else        	sheets[filename.split('.')[0]] ? (delete sheets[filename.split('.')[0]]) : (sheets[filename.split('.')[0]] = xls.parse('./xls/' + filename)[0].data);
 //         }
 //         else sheets[filename.split('.')[0]] = xls.parse('./xls/' + filename)[0].data;
-//         console.log(sheets[filename.split('.')[0]]);
 //     }, 1000 * 30);
 // })
 
@@ -65,7 +64,6 @@ app.post('/upload', (req, res, next) => {
 
 });
 app.use('/wechat', wechat(config, function(req, res, next) {
-    //console.log(req.weixin);
     let type = req.weixin.MsgType;
     switch (type) {
         case 'event':

@@ -8,21 +8,35 @@
     <title>Document</title><style type="text/css">
     *{
         margin:0;
-        padding:0;
+        padding:10px;
+    }
+     header{
+        
+        width:400px;
+        margin:160px auto;
+     
     }
 	form{
-		margin:200px;
-		width:350px;
+       
+		width:400px;
+        height: 200px;
 		padding:50px;
 		border:1px solid;
 	}
 	label{
+        float: right;
 		color:red;
 	}
 	input{
 		width:200px;
 		float:right;
 	}
+    p{
+        height:40px;
+        vertical-align: center;
+        overflow: hidden;
+    }
+ 
 
 </style>
 
@@ -50,16 +64,20 @@
         }
     </script>
 <body>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <header>
+         <h2> 默认检索第3列</h2>
+           <form action="/upload" method="POST" enctype="multipart/form-data">
 
 
-        <p>上传文件： <input type="file" name="content" onchange="verify(this)" /><label id="checkFile"></label></p>
-        <p>文件标题行： <input name="targetCol" type="number" /></p>
-        <p>检索列： <input name="targetTitle" type="number" /></p>
+        <p>上传文件： <input type="file" name="content" onchange="verify(this)" /></p>
+      <!--   <p>文件标题行： <input name="targetCol" type="number" /></p>
+        <p>检索列： <input name="targetTitle" type="number" /></p> -->
         <p>口令：</label> <input name="pwd" type="password" /></p>
 
-        <input id="submit" type="submit" value="提交" /><label id="resStatus"></label>
+        <input id="submit" type="submit" value="提交" /><label id="checkFile"></label>
     </form>
+      </header>
+
    
 
 </html>
