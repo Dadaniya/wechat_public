@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title><style type="text/css">
+    *{
+        margin:0;
+        padding:0;
+    }
 	form{
 		margin:200px;
 		width:350px;
@@ -25,15 +29,22 @@
 </head>
 
     <script>
+
         function verify(file) {
         	 let checkEle = document.querySelector("#checkFile");
+             let submitEle=document.querySelector("#submit");
             let fileType = ['xls', 'xlsx'];
             let filePath = file.value;            
             let maxSize = 10 * 1024 * 1024;
+            submitEle.disabled=true;
             if (filePath) {
                 if (fileType.some(value => filePath.endsWith(value))) {
                     if (file.size > maxSize) checkEle.textContent = "文件不能大于10M";
-                    else checkEle.textContent = "格式检查通过";
+                    else{
+                        checkEle.textContent = "格式检查通过";
+                        checkEle.style.color="#0f0";
+                        submitEle.disabled=false;
+                    } 
                 } else checkEle.textContent = "文件格式有误";
             }
         }
@@ -47,9 +58,8 @@
         <p>检索列： <input name="targetTitle" type="number" /></p>
         <p>口令：</label> <input name="pwd" type="password" /></p>
 
-        <input type="submit" value="提交" /><label id="resStatus"></label>
+        <input id="submit" type="submit" value="提交" /><label id="resStatus"></label>
     </form>
    
-</body>
 
 </html>
